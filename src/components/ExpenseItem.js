@@ -1,15 +1,19 @@
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
 function ExpenseItem(props) {
 
     // const expenseDate = new Date(2023, 11, 10);
     // const expenseItem = 'Grocery';
     // const expenseAmount = 5000;
     // const location = 'Indore'
+    
 
     return (
-        <div>
-        <h4>{props.title}</h4>
-        <h4>{props.amount}</h4>
-        <h4>{props.location}</h4>
+        <div className='expense-item'>
+        <ExpenseDate date= {props.date}/>
+        <div className='expense-item__description'>{props.title}</div>
+        <div className='expense-item__description'>{props.location}</div>
+        <div className='expense-item__price'>{props.amount}</div>
         </div>
     )
 }
