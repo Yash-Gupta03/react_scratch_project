@@ -7,6 +7,10 @@ const ExpenseItem = (props) => {
     // const expenseItem = 'Grocery';
     // const expenseAmount = 5000;
     // const location = 'Indore'
+
+    const deleteExpense = () => {
+        console.log('This is to delete a expense');
+    }
     
 
     return (
@@ -15,6 +19,7 @@ const ExpenseItem = (props) => {
         <div className='expense-item__description'>{props.title}</div>
         <div className='expense-item__description'>{props.location}</div>
         <div className='expense-item__price'>{props.amount}</div>
+        <button onClick={deleteExpense}>Delete</button>
         </div>
     )
 }
