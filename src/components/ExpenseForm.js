@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
     const [title, enteredTitle] = useState('')
     const [date, enteredDate] = useState('')
@@ -28,7 +28,12 @@ const ExpenseForm = () => {
             amount: amount,
             date: new Date(date)
         }
-        console.log(expenseData);
+
+        props.onSaveExpenseData(expenseData)
+
+        enteredTitle('');
+        enteredDate('');
+        enteredAmount('');
     }
 
 
@@ -36,11 +41,11 @@ const ExpenseForm = () => {
         <div>
             <form action="#" onSubmit={submitHandler}>
                 <label htmlFor="title">Title</label>
-                <input type="text" onChange={titleHandler}/>
+                <input type="text" value={title} onChange={titleHandler}/>
                 <label htmlFor="amount">Amount</label>
-                <input type="text" onChange={amountHandler} />
+                <input type="text" value={amount} onChange={amountHandler} />
                 <label htmlFor="date">Date</label>
-                <input type="date" onChange={dateHandler}/>
+                <input type="date" value={date} onChange={dateHandler}/>
                 <button type="submit">Submit</button>
             </form>
         </div>

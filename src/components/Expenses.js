@@ -6,10 +6,18 @@ import Card from "./Card";
 
 const Expenses = (props) => {
 
+    const saveExpenseDataHandler = (enteredExpenseData) => {
+        const expenseData = {
+            ...enteredExpenseData,
+            id: Math.random().toString()
+        };
+        console.log(expenseData);
+    }
+
 return (
     <Card className='expenses'>
       <h2>Let's get started!</h2>
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData = {saveExpenseDataHandler} />
       <ExpenseItem date={props.data[0].date} title={props.data[0].title} amount = {props.data[0].amount} location = {props.data[0].location}></ExpenseItem>
 
       <ExpenseItem date={props.data[0].date} title={props.data[1].title} amount = {props.data[1].amount} location = {props.data[1].location}></ExpenseItem>
