@@ -21,10 +21,20 @@ const ExpenseForm = () => {
         enteredDate(event.target.value);
     }
 
+    const submitHandler = (event) => {
+        event.preventDefault();
+        const expenseData = {
+            title: title,
+            amount: amount,
+            date: new Date(date)
+        }
+        console.log(expenseData);
+    }
+
 
     return (
         <div>
-            <form action="#">
+            <form action="#" onSubmit={submitHandler}>
                 <label htmlFor="title">Title</label>
                 <input type="text" onChange={titleHandler}/>
                 <label htmlFor="amount">Amount</label>
