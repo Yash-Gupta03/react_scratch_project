@@ -13,6 +13,10 @@ const App = () => {
   date: new Date(2023, 11, 10), title: 'adventure', amount: 10000, location: 'Himalaya'
 }]
 
+const addExpenses = (expense) => {
+  console.log('app.js', expense);
+}
+
   // return (
   //   <div>
   //     <h2>Let's get started!</h2>
@@ -26,7 +30,7 @@ const App = () => {
   //     } */}
   //   </div>
   // );
-  return (<Expenses data={data}/>);
+  return (<Expenses data={data} onAddExpense = {addExpenses}/>);
 }
 
 export default App;
