@@ -1,36 +1,52 @@
-// import ExpenseItem from "./components/ExpenseItem";
-// import ExpenseForm from "./components/ExpenseForm";
-import Expenses from './components/Expenses';
+import React, { useState } from "react";
+
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expenses from "./components/Expenses/Expenses";
+
+const DUMMY_EXPENSES = [
+  {
+    id: "e1",
+    title: "Toilet Paper",
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
+  },
+  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
+  {
+    id: "e3",
+    title: "Car Insurance",
+    amount: 294.67,
+    date: new Date(2021, 2, 28),
+  },
+  {
+    id: "e4",
+    title: "New Desk (Wooden)",
+    amount: 450,
+    date: new Date(2021, 5, 12),
+  },
+];
 
 const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
-  const data = [{
-    date: new Date(2023, 11, 10),title: 'books', amount: 1000, location: 'Indore'
-  }, 
-{
-  date: new Date(2023, 11, 10), title: 'travel', amount: 3000, location: 'Indore'
-}, {
-  date: new Date(2023, 11, 10), title: 'adventure', amount: 10000, location: 'Himalaya'
-}]
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
 
-const addExpenses = (expense) => {
-  console.log('app.js', expense);
-}
-
-  // return (
-  //   <div>
-  //     <h2>Let's get started!</h2>
-  //     <ExpenseForm />
-  //     <ExpenseItem date={data[0].date} title={data[0].title} amount = {data[0].amount} location = {data[0].location}></ExpenseItem>
-  //     <ExpenseItem date={data[0].date} title={data[1].title} amount = {data[1].amount} location = {data[1].location}></ExpenseItem>
-  //     <ExpenseItem date={data[0].date} title={data[2].title} amount = {data[2].amount} location = {data[2].location}></ExpenseItem>
-      
-  //     {/* for (let i=0; i < 3; i++){
-  //       <ExpenseItem title={data[i].title} amount = {data[i].amount} location = {data[i].location}></ExpenseItem>
-  //     } */}
-  //   </div>
+  // return React.createElement(
+  //   'div',
+  //   {},
+  //   React.createElement('h2', {}, "Let's get started!"),
+  //   React.createElement(Expenses, { items: expenses })
   // );
-  return (<Expenses data={data} onAddExpense = {addExpenses}/>);
-}
+
+  return (
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
+    </div>
+  );
+};
 
 export default App;
